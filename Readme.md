@@ -12,12 +12,16 @@
 ```
 brew install node
 # 查看node安装
- node --version
+node --version
 
 ```
 安装依赖项
 ```
 npm install
+
+# 速度慢可使用yarn
+node install -g yarn
+yarn install
 ```
 
 
