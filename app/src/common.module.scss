@@ -1,0 +1,60 @@
+// 颜色变量定义
+$text: rgba(0, 0, 0, 0.88);
+$text-dark: rgba(255, 255, 255, .85);
+$dust-red: #ff4d4f;
+$dust-red-dark: #dc4446;
+$daybreak-blue: #1677ff;
+$daybreak-blue-hover: #69b1ff;
+$daybreak-blue-dark: #1668dc;
+$daybreak-blue-dark-hover: #15417e;
+$cyan: #13c2c2;
+$cyan-dark: #13a8a8;
+
+// 红色提示文字
+.tips {
+  color: $dust-red;
+}
+
+// 链接
+.link {
+  color: $daybreak-blue;
+  transition: color .3s;
+  cursor: pointer;
+
+  &:hover {
+    color: $daybreak-blue-hover;
+  }
+}
+
+.primaryText {
+  color: $cyan;
+}
+
+@media (prefers-color-scheme: dark) {
+  .text {
+    color: $text-dark;
+  }
+
+  .tips {
+    color: $dust-red-dark;
+  }
+
+  .link {
+    color: $daybreak-blue-dark;
+
+    &:hover {
+      color: $daybreak-blue-dark-hover;
+    }
+  }
+
+  .primaryText {
+    color: $cyan-dark;
+  }
+}
+
+// 修复rc-virtual-list组件的暗黑模式下滚动条颜色
+@media (prefers-color-scheme: dark) {
+  .virtualList :global(.rc-virtual-list-scrollbar-thumb) {
+    background: rgba(255, 255, 255, .5) !important;
+  }
+}

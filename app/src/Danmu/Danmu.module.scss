@@ -1,0 +1,99 @@
+.danmuContainer {
+    padding: 20px;
+    background: #f0f0f0;
+    border-radius: 10px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .danmuContent {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 10px;
+  }
+  
+  .giftColumn,
+  .danmuColumn {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .scrollableContent {
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: white;
+  }
+  
+  h2 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #333;
+  }
+
+.danmuItem {
+padding: 1px 20px 1px 3px;
+margin-bottom: 4px;
+word-wrap: break-word;
+overflow-wrap: break-word;
+
+.content {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    min-height: 10;
+}
+
+.index {
+    flex-shrink: 0;
+    margin-right: 4px;
+}
+
+.nickname {
+    margin-left: 3px;
+    font-weight: bold;
+    color: #72579b;
+}
+
+.message {
+    flex-grow: 1;
+    min-width: 0;
+}
+}
+
+.memberMessage {
+color: #13c2c2; // 使用您之前定义的 $cyan 颜色
+}
+
+.chatRoom{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; // 添加这一行
+
+}
+.buttonContent{
+    align-items: flex-start;
+    margin-left: auto;
+}
+.giftMessageContainer {
+    :global(.ant-table) {
+      border: 1px solid #f0f0f0;
+    }
+  
+    :global(.ant-table-tbody > tr > td) {
+      padding: 4px 8px;
+      border: 1px solid #f0f0f0;
+    }
+  
+    :global(.ant-table-cell) {
+      white-space: nowrap;
+    }
+  }
+  

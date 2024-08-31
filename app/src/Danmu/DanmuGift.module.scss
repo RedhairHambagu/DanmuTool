@@ -1,0 +1,39 @@
+.giftMessageContainer {
+  margin-bottom: 8px;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.05);
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+.giftMessageContent {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  font-size: 14px;
+  color: #1654a6;
+}
+
+.giftIcon {
+  font-size: 18px;
+  margin-right: 8px;
+  color: #ff69b4; // 粉色，可以根据需要调整
+}
+
+.userName {
+  font-weight: bold;
+  color: #ffd700; // 金色，可以根据需要调整
+}
+
+.giftName {
+  color: #00ffff; // 青色，可以根据需要调整
+}
+
+.giftCount {
+  margin-left: 4px;
+  font-weight: bold;
+}
+
