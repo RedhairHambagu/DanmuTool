@@ -1,20 +1,30 @@
 {
   "dependencies": {
     "@yxim/nim-web-sdk": "^9.17.5",
+    "antd": "^5.20.2",
     "fs": "^0.0.1-security",
     "http-server": "^14.1.1",
+    "js-yaml": "^4.1.0",
     "next": "^14.2.8",
+    "next-transpile-modules": "^10.0.1",
     "node-nim": "^9.18.0",
     "path": "^0.12.7",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.1",
     "react-scripts": "5.0.0",
+    "sass": "^1.78.0",
+    "sass-embedded": "^1.77.8",
     "typescript": "^4.0.0",
+    "uuid": "^10.0.0",
     "webpack": "^5.94.0",
-    "webpack-cli": "^5.1.4"
+    "webpack-cli": "^5.1.4",
+    "ws": "^8.18.0"
   },
   "scripts": {
-    "dev": "next dev",
+    "dev": "concurrently \"npm run next\" \"npm run websocket\"",
+    "next": "next dev -p 9250",
+    "websocket": "node websocketServer.js",
     "build": "next build",
     "start": "next start"
   },
@@ -37,7 +47,9 @@
     ]
   },
   "devDependencies": {
+    "@types/node": "22.5.4",
     "@types/react": "18.3.5",
+    "concurrently": "^9.0.0",
     "node-loader": "^2.0.0"
   }
 }

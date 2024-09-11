@@ -12,8 +12,10 @@ const nextConfig = {
             // 其他需要的模块可以在这里添加
         };
 
+
         return config;
     },
 };
 
 module.exports = nextConfig;
+ 
