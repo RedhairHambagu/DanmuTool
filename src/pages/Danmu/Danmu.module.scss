@@ -30,13 +30,13 @@
     border-radius: 5px;
     padding: 10px;
     background-color: white;
+
+    h2 {
+      margin-bottom: 10px;
+      font-size: 18px;
+      color: #333;
   }
-  
-  h2 {
-    margin-bottom: 10px;
-    font-size: 18px;
-    color: #333;
-  }
+}
 
 .danmuItem {
 padding: 1px 20px 1px 3px;
@@ -97,3 +97,8 @@ color: #13c2c2; // 使用您之前定义的 $cyan 颜色
     }
   }
   
+
+  .customSwitch {
+    transform: scale(1.1); // 调整大小
+    margin: 10px; // 可选，添加一些间距
+    }

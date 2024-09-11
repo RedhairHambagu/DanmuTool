@@ -24,6 +24,7 @@ import DanmuGift from './DanmuGift';
 import { CopyOutlined } from '@ant-design/icons';
 
 
+
 function isLiveRoomTextCustom(item: CppLiveRoomBasicEvent, custom: LiveRoomTextCustom | LiveRoomGiftInfoCustom): custom is LiveRoomTextCustom {
   return item.msg_type_ === 0 || custom.messageType === 'BARRAGE_MEMBER' || custom.messageType === 'BARRAGE_NORMAL';
 }
@@ -152,8 +153,10 @@ const Danmu: React.FC<DanmuProps> = ({ accid, pwd, roomId, appDataDir }) => {
       // 获取到新信息
   function handleNewMessage(t: NodeNimChatroomSocket, event: Array<ChatRoomMessage>): void {
     const filterMessage: Array<CppLiveRoomBasicEvent> = [];
-
+    console.log('handleNewMessage 被调用:', event);  // 确保此处输出正确
     for (const item of event) {
+      console.log('正在处理消息:', item);  // 查看消息的结构
+      if (item.msg_type_ !== undefined){
       if (item.msg_type_ === 0) {
         filterMessage.unshift({ ...item, vid: uuidv4(), index: messageCountRef.current++ });
       } else if (item.msg_type_ === 100 && item.msg_setting_?.ext_) {
@@ -164,7 +167,8 @@ const Danmu: React.FC<DanmuProps> = ({ accid, pwd, roomId, appDataDir }) => {
         }
       }
     }
-
+    }
+    console.log('过滤后的消息:', filterMessage);  // 确认消息过滤逻辑是否正常
     setDanmuData((prevState: CppLiveRoomBasicEvent[]): CppLiveRoomBasicEvent[] => filterMessage.concat(prevState));
   }
 
@@ -181,9 +185,15 @@ function danmuOpen(): void {
         appDataDir,
         handleNewMessage
       );
+      // const apiUrl = `${window.location.origin}/api/nimSocket`; // 构建 API URL
       console.log('NodeNimChatroomSocket 初始化成功，正在调用 init()...');
-      nimRef.current.init();
-      console.log('init() 调用成功');
+      nimRef.current.init().then(success => {
+        if (success) {
+          console.log('init() 调用成功');
+        } else {
+          console.error('init() 调用失败');
+        }
+      });
     } catch (error) {
       console.error('danmuOpen 函数出错:', error);
     }
@@ -285,7 +295,8 @@ function handleSwitchChange(checked: boolean): void {
       <div className={styles.chatRoom}>  
       <span>房间ID: {roomId}</span>
       <Switch
-        size="small"
+        size="default"
+        className={styles.customSwitch} // 使用自定义样式
         defaultChecked={isDanmuOn}
         checkedChildren="弹幕开启"
         unCheckedChildren="弹幕关闭"
@@ -301,7 +312,8 @@ function handleSwitchChange(checked: boolean): void {
           </div>
       <div className={styles.buttonContent}></div>
                 <Switch
-        size="small"
+                className={styles.customSwitch} // 使用自定义样式
+        size="default"
         defaultChecked={isLiveFormat}
         checkedChildren="公演ON"
         unCheckedChildren="普通OFF"

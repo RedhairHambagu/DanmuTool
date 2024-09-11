@@ -1,7 +1,7 @@
 import React, {ErrorInfo, ReactNode} from 'react';
 import { HashRouter as Router, Route, Routes } from 'react-router-dom';
-import MainPage from './MainPage';
-import Chat from './chatroom/Chat';
+import MainPage from './pages/MainPage';
+import Chat from './pages/chatroom';
 
 
 
@@ -30,14 +30,12 @@ class ErrorBoundary extends React.Component<{children: ReactNode}, {hasError: bo
 
 function App() {
   return (
-    <ErrorBoundary>
     <Router>
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route path="/danmu" element={<Chat />} />
+        <Route path="/chatroom" element={<Chat />} />
       </Routes>
     </Router>
-    </ErrorBoundary>
   );
 }
 

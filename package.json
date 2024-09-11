@@ -1,107 +1,55 @@
 {
-  "name": "DanmuGiftTool",
-  "version": "1.0.0",
-  "main": "app/main.mjs",
-  "author": "author",
-  "description": "tool for danmu and gift",
-  "scripts": {
-    "dev": "concurrently \"vite\" \"cross-env NODE_ENV=development electron .\"",
-    "start": "electron . --enable-logging",
-    "build": "vite build",
-    "dist": "npm run build && npm run electron:build",
-    "electron:build": "electron-builder --win portable --x64",
-    "package-win": "electron-packager . DanmuGiftTool --overwrite --asar --platform=win32 --arch=x64 --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Danmu Gift Tool\" --portable --extra-resource=./node_modules/node-nim/build/Release",
-     "package-mac": "electron-packager . DanmuGiftTool --overwrite --platform=darwin --arch=x64 --prune=true --out=release-builds",
-    "rebuild": "electron-rebuild -f -w node-nimn",
-    "prebuild": "npm rebuild node-nim",
-    "postinstall": "electron-builder install-app-deps",
-    "postinstall-win": "npm rebuild bufferutil --update-binary",
- "electron:build:mac": "electron-builder --mac",
-  "dist:mac": "npm run build && npm run electron:build:mac",
-    "postinstall-mac": "npm rebuild node-nim --target=31.0.2 --arch=x64 --dist-url=https://electronjs.org/headers"
-  },
   "dependencies": {
     "@yxim/nim-web-sdk": "^9.17.5",
     "antd": "^5.20.2",
-    "axios": "^1.7.5",
-    "cross-env": "^7.0.3",
-    "electron-store": "^10.0.0",
+    "fs": "^0.0.1-security",
+    "http-server": "^14.1.1",
     "js-yaml": "^4.1.0",
-    "node-nim": "^9.16.11",
+    "next": "^14.2.8",
+    "next-transpile-modules": "^10.0.1",
+    "node-nim": "^9.18.0",
+    "path": "^0.12.7",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.1",
+    "react-scripts": "5.0.0",
+    "sass": "^1.78.0",
     "sass-embedded": "^1.77.8",
+    "typescript": "^4.0.0",
     "uuid": "^10.0.0",
-    "vite-plugin-optimizer": "^1.4.3"
+    "webpack": "^5.94.0",
+    "webpack-cli": "^5.1.4",
+    "ws": "^8.18.0"
+  },
+  "scripts": {
+    "dev": "concurrently \"npm run next\" \"npm run websocket\"",
+    "next": "next dev -p 9250",
+    "websocket": "node websocketServer.js",
+    "build": "next build",
+    "start": "next start"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
   "devDependencies": {
-    "@types/react": "^18.3.4",
-    "@types/react-dom": "^18.3.0",
-    "@types/uuid": "^10.0.0",
-    "@vitejs/plugin-react": "^4.3.1",
-    "concurrently": "^8.2.2",
-    "electron": "^31.0.2",
-    "electron-builder": "^24.13.3",
-    "electron-packager": "^17.1.2",
-    "typescript": "^5.5.4",
-    "vite": "^5.4.2",
-    "wait-on": "^7.2.0"
-  },
-  "build": {
-    "appId": "com.yourcompany.danmugifttool",
-    "productName": "DanmuGiftTool",
-    "directories": {
-      "output": "dist"
-    },
-    "files": [
-      "app/**/*",
-      "node_modules/**/*",
-      "dist/**/*", 
-      "package.json"
-    ],
-    "extraResources": [
-      {
-        "from": "node_modules/node-nim/sdk/lib",
-        "to": "sdk/lib",
-        "filter": ["**/*"]
-      },
-      {
-        "from": "node_modules/node-nim/sdk",
-        "to": "sdk",
-        "filter": ["**/*"]
-      }
-    ],
-    "asar": true,
-    "asarUnpack": [
-      "node_modules/node-nim/**/*"
-    ],
-    "win": {
-      "target": "portable",
-      "artifactName": "${productName}-${version}.${ext}",
-      "legalTrademarks": "Your Trademark"
-    },
-    "portable": {
-      "artifactName": "${productName}-portable-${version}.${ext}",
-      "publish": null
-    },
-    "mac": {
-      "target": [
-        {
-          "target": "dmg",
-          "arch": ["x64"]
-        },
-        {
-          "target": "zip",
-          "arch": ["x64"]
-        }
-        ],
-      "category": "public.app-category.utilities",
-      "identity": null,
-      "hardenedRuntime": false,
-      "gatekeeperAssess": false,
-      "entitlements": null,
-      "entitlementsInherit": null
-    }
+    "@types/node": "22.5.4",
+    "@types/react": "18.3.5",
+    "concurrently": "^9.0.0",
+    "node-loader": "^2.0.0"
   }
 }
