@@ -8,14 +8,16 @@
 
 ## 项目启动
 
-建议使用codespace或者gitpod直接打开repo
-然后终端运行下面代码
-```bash
-npm run dev
-```
+
+
 
 ### 本地使用
-安装node
+1. 下载repo
+```
+git clone repo_address
+cd DanmuTool
+```
+2. 安装node
 ```
 brew install node
 # 或者直接下载node，其他方式可自行使用搜索工具
@@ -31,7 +33,13 @@ npm install
 node install -g yarn
 yarn install
 ```
+3. 然后终端运行下面代码
+```bash
+npm run dev
+```
+4. localhost:9250
 
+   
 备注
 [0] You are using Node.js 16.20.2. For Next.js, Node.js version >= v18.17.0 is required.
 [1] WebSocket 服务器已启动，监听 ws://localhost:8080
