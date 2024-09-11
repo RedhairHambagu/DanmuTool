@@ -26,8 +26,8 @@
     "dev": "concurrently \"npm run next\" \"npm run websocket\"",
     "next": "next dev -p 9250",
     "websocket": "node websocketServer.js",
-    "build": "next build",
-    "start": "next start"
+    "build": "concurrently \"npm run next\" \"npm run websocket\"",
+    "start": "concurrently \"npm run next\" \"npm run websocket\""
   },
   "eslintConfig": {
     "extends": [
